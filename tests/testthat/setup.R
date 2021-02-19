@@ -13,7 +13,7 @@ copyright <- paste(
   "NHL and the NHL Shield are registered trademarks",
   "of the National Hockey League.",
   "NHL and NHL team marks are the property of the NHL and its teams.",
-  "© NHL 2020. All Rights Reserved."
+  "© NHL", format(Sys.Date(), "%Y."), "All Rights Reserved."
 )
 
 testplayers <- list(
@@ -160,12 +160,7 @@ testplayers_processed <- data.frame(
     "https://statsapi.web.nhl.com/api/v1/people/8451101",
     "https://statsapi.web.nhl.com/api/v1/people/8451033"
   ),
-  copyright = paste(
-    "NHL and the NHL Shield are registered trademarks",
-    "of the National Hockey League.",
-    "NHL and NHL team marks are the property of the NHL and its teams.",
-    "© NHL 2020. All Rights Reserved."
-  ),
+  copyright = copyright,
   stringsAsFactors = FALSE
 )
 
@@ -439,7 +434,7 @@ retrievedplayerplayoffs <- data.frame(
   stat.powerPlayGoals = 6L,
   stat.powerPlayPoints = 16L,
   stat.penaltyMinutes = "14",
-  stat.shotPct = 18.4,
+  stat.shotPct = 18.37,
   stat.gameWinningGoals = 6L,
   stat.overTimeGoals = 2L,
   stat.shortHandedGoals = 0L,
@@ -680,7 +675,7 @@ divisions_done <- data.frame(
   nameShort = "Metro",
   link = "/api/v1/divisions/18",
   abbreviation = "M",
-  active = TRUE,
+  active = FALSE,
   conference.id = 6L,
   conference.name = "Eastern",
   conference.link = "/api/v1/conferences/6",
@@ -703,3 +698,52 @@ conferences_done <- data.frame(
   copyright = rep(copyright, 2L),
   stringsAsFactors = FALSE
 )
+
+
+# Image testing helpers ----
+plot_image <- function(expr) {
+  # plot to svg and return file contant as character
+  file <- tempfile(fileext = ".svg")
+  on.exit(unlink(file))
+  svg(file)
+  expr
+  dev.off()
+  readLines(file)
+}
+
+ignore_svg_id <- function(lines) {
+  # the IDs differ at each `svg` call, we remove them
+  gsub(
+    pattern = "(xlink:href|id)=\"#?([a-z0-9]+)-?(?<![0-9])[0-9]+\"",
+    replacement = "\\1=\"\\2\"",
+    x = lines,
+    perl = TRUE
+  )
+}
+
+round_svg_numbers <- function(lines) {
+  # Round the numbers in svg - there can be tiny differences
+  pattern <- "(-)?[[:digit:]]+\\.[[:digit:]]*"
+  matchedNumbers <- gregexpr(pattern, lines)
+  regmatches(lines, matchedNumbers) <- lapply(
+    regmatches(lines, matchedNumbers),
+    function(x) round(as.numeric(x), 4)
+  )
+  lines
+}
+
+# create reference image
+create_reference_image <- function(expr, file) {
+  svg(file)
+  expr
+  dev.off()
+}
+
+plot_image <- function(expr) {
+  file <- tempfile(fileext = ".svg")
+  on.exit(unlink(file))
+  svg(file)
+  expr
+  dev.off()
+  readLines(file)
+}

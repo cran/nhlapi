@@ -39,7 +39,7 @@ nhl_make_seasons.numeric <- function(seasons = 1950:2019) {
 }
 
 #'@export
-nhl_make_seasons.character <- function(seasons){
+nhl_make_seasons.character <- function(seasons) {
   reservedValues <- c("current", NA_character_)
   if (length(seasons) == 1L && seasons %in% reservedValues) {
     return(seasons)
@@ -99,7 +99,7 @@ util_process_copyright <- function(x, el = "copyright") {
 #'     datasets::mtcars[2, 4:5]
 #'   ))
 util_rbindlist <- function(lst, fill = TRUE) {
-  lst <- Filter(function(x) nrow(x) != 0L, lst)
+  lst <- Filter(function(x) is.data.frame(x) && nrow(x) != 0L, lst)
 
   if (length(lst) == 0L) {
     return(data.frame())
@@ -114,15 +114,20 @@ util_rbindlist <- function(lst, fill = TRUE) {
   }
   lstAllNames <- unique(unlist(lstNames))
   fill_df <- function(df, allNms) {
-    if (identical(names(df), allNms)) {
+    missingCols <- setdiff(allNms, names(df))
+    if (length(missingCols) == 0L) {
       return(data.frame(df, row.names = NULL))
     }
     filledCols <- vapply(
-      setdiff(allNms, names(df)),
-      function(thisCol) NA,
-      FUN.VALUE = logical(1)
+      missingCols,
+      function(thisCol) structure(list(rep(NA, nrow(df))), names = thisCol),
+      FUN.VALUE = list(1)
     )
-    data.frame(c(df, filledCols), stringsAsFactors = FALSE)
+    data.frame(
+      list(df, filledCols),
+      stringsAsFactors = FALSE,
+      row.names = NULL
+    )
   }
   filledDfs <- lapply(lst, fill_df, allNms = lstAllNames)
   do.call(rbind, filledDfs)
@@ -309,7 +314,10 @@ util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
   res <- map[map[["nameMd5"]] == md, "id"]
   if (length(res) == 0L) {
     res <- NA_integer_
-    log_w("Id for player: ", x, " not found.")
+    log_w("Id for player name:", sQuote(x), "not found.")
+  }
+  if (length(res) > 1L) {
+    log_w("Multiple ids:", toString(res), "found for name:", sQuote(x))
   }
   res
 }
@@ -322,7 +330,8 @@ util_map_player_id <- function(x, map = getOption("nhlapi_player_map")) {
 #'
 #' @return `integer()`, named vector of player ids,
 #'   `NA_integer`` for those names where id was not
-#'   found.
+#'   found. In case a player name has multiple ids,
+#'   all of them are returned.
 #'
 #' @examples
 #'   nhlapi:::util_map_player_ids(
@@ -332,7 +341,9 @@ util_map_player_ids <- function(
   playerNames,
   map = getOption("nhlapi_player_map")
 ) {
-  vapply(playerNames, util_map_player_id, FUN.VALUE = integer(1), map = map)
+  res <- lapply(playerNames, util_map_player_id, map = map)
+  names(res) <- playerNames
+  unlist(res, recursive = FALSE)
 }
 
 

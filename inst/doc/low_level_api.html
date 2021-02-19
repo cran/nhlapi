@@ -216,7 +216,7 @@ urls &lt;- c(
 nhl_get_data(urls)
 #&gt; [[1]]
 #&gt; [[1]]$copyright
-#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved.&quot;
+#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2021. All Rights Reserved.&quot;
 #&gt; 
 #&gt; [[1]]$teams
 #&gt;   id              name            link abbreviation teamName locationName
@@ -225,31 +225,29 @@ nhl_get_data(urls)
 #&gt; 1            1982 New Jersey http://www.newjerseydevils.com/          23   TRUE
 #&gt;          venue.name          venue.link venue.city venue.timeZone.id
 #&gt; 1 Prudential Center /api/v1/venues/null     Newark  America/New_York
-#&gt;   venue.timeZone.offset venue.timeZone.tz division.id division.name
-#&gt; 1                    -4               EDT          18  Metropolitan
-#&gt;   division.nameShort        division.link division.abbreviation conference.id
-#&gt; 1              Metro /api/v1/divisions/18                     M             6
-#&gt;   conference.name       conference.link franchise.franchiseId
-#&gt; 1         Eastern /api/v1/conferences/6                    23
-#&gt;   franchise.teamName        franchise.link
-#&gt; 1             Devils /api/v1/franchises/23
+#&gt;   venue.timeZone.offset venue.timeZone.tz division.id   division.name
+#&gt; 1                    -5               EST          25 MassMutual East
+#&gt;          division.link conference.id conference.name       conference.link
+#&gt; 1 /api/v1/divisions/25             6         Eastern /api/v1/conferences/6
+#&gt;   franchise.franchiseId franchise.teamName        franchise.link
+#&gt; 1                    23             Devils /api/v1/franchises/23
 #&gt; 
 #&gt; attr(,&quot;url&quot;)
 #&gt; [1] &quot;https://statsapi.web.nhl.com/api/v1/teams/1&quot;
 #&gt; 
 #&gt; [[2]]
 #&gt; [[2]]$copyright
-#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved.&quot;
+#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2021. All Rights Reserved.&quot;
 #&gt; 
 #&gt; [[2]]$people
 #&gt;        id      fullName                   link firstName lastName primaryNumber
-#&gt; 1 8477474 Madison Bowey /api/v1/people/8477474   Madison    Bowey            74
+#&gt; 1 8477474 Madison Bowey /api/v1/people/8477474   Madison    Bowey            29
 #&gt;    birthDate currentAge birthCity birthStateProvince birthCountry nationality
 #&gt; 1 1995-04-22         25  Winnipeg                 MB          CAN         CAN
 #&gt;   height weight active alternateCaptain captain rookie shootsCatches
 #&gt; 1  6&#39; 2&quot;    202   TRUE            FALSE   FALSE  FALSE             R
-#&gt;   rosterStatus currentTeam.id  currentTeam.name currentTeam.link
-#&gt; 1            Y             17 Detroit Red Wings /api/v1/teams/17
+#&gt;   rosterStatus currentTeam.id   currentTeam.name currentTeam.link
+#&gt; 1            Y             16 Chicago Blackhawks /api/v1/teams/16
 #&gt;   primaryPosition.code primaryPosition.name primaryPosition.type
 #&gt; 1                    D           Defenseman           Defenseman
 #&gt;   primaryPosition.abbreviation
@@ -264,40 +262,40 @@ nhl_get_data(urls)
 <pre><code class="r">nhl_get_data(urls, flatten = FALSE)
 #&gt; [[1]]
 #&gt; [[1]]$copyright
-#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved.&quot;
+#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2021. All Rights Reserved.&quot;
 #&gt; 
 #&gt; [[1]]$teams
 #&gt;   id              name            link        venue.name          venue.link
 #&gt; 1  1 New Jersey Devils /api/v1/teams/1 Prudential Center /api/v1/venues/null
 #&gt;   venue.city venue.timeZone.id venue.timeZone.offset venue.timeZone.tz
-#&gt; 1     Newark  America/New_York                    -4               EDT
-#&gt;   abbreviation teamName locationName firstYearOfPlay division.id division.name
-#&gt; 1          NJD   Devils   New Jersey            1982          18  Metropolitan
-#&gt;   division.nameShort        division.link division.abbreviation conference.id
-#&gt; 1              Metro /api/v1/divisions/18                     M             6
-#&gt;   conference.name       conference.link franchise.franchiseId
-#&gt; 1         Eastern /api/v1/conferences/6                    23
-#&gt;   franchise.teamName        franchise.link  shortName
-#&gt; 1             Devils /api/v1/franchises/23 New Jersey
-#&gt;                   officialSiteUrl franchiseId active
-#&gt; 1 http://www.newjerseydevils.com/          23   TRUE
+#&gt; 1     Newark  America/New_York                    -5               EST
+#&gt;   abbreviation teamName locationName firstYearOfPlay division.id
+#&gt; 1          NJD   Devils   New Jersey            1982          25
+#&gt;     division.name        division.link conference.id conference.name
+#&gt; 1 MassMutual East /api/v1/divisions/25             6         Eastern
+#&gt;         conference.link franchise.franchiseId franchise.teamName
+#&gt; 1 /api/v1/conferences/6                    23             Devils
+#&gt;          franchise.link  shortName                 officialSiteUrl franchiseId
+#&gt; 1 /api/v1/franchises/23 New Jersey http://www.newjerseydevils.com/          23
+#&gt;   active
+#&gt; 1   TRUE
 #&gt; 
 #&gt; attr(,&quot;url&quot;)
 #&gt; [1] &quot;https://statsapi.web.nhl.com/api/v1/teams/1&quot;
 #&gt; 
 #&gt; [[2]]
 #&gt; [[2]]$copyright
-#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved.&quot;
+#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2021. All Rights Reserved.&quot;
 #&gt; 
 #&gt; [[2]]$people
 #&gt;        id      fullName                   link firstName lastName primaryNumber
-#&gt; 1 8477474 Madison Bowey /api/v1/people/8477474   Madison    Bowey            74
+#&gt; 1 8477474 Madison Bowey /api/v1/people/8477474   Madison    Bowey            29
 #&gt;    birthDate currentAge birthCity birthStateProvince birthCountry nationality
 #&gt; 1 1995-04-22         25  Winnipeg                 MB          CAN         CAN
 #&gt;   height weight active alternateCaptain captain rookie shootsCatches
 #&gt; 1  6&#39; 2&quot;    202   TRUE            FALSE   FALSE  FALSE             R
-#&gt;   rosterStatus currentTeam.id  currentTeam.name currentTeam.link
-#&gt; 1            Y             17 Detroit Red Wings /api/v1/teams/17
+#&gt;   rosterStatus currentTeam.id   currentTeam.name currentTeam.link
+#&gt; 1            Y             16 Chicago Blackhawks /api/v1/teams/16
 #&gt;   primaryPosition.code primaryPosition.name primaryPosition.type
 #&gt; 1                    D           Defenseman           Defenseman
 #&gt;   primaryPosition.abbreviation
@@ -310,8 +308,8 @@ nhl_get_data(urls)
 <p>In case there are errors encountered when retrieving the data, the process does not fail, but returns a list with class <code>nhl_get_data_error</code>:</p>
 
 <pre><code class="r">nhl_get_data(c(&quot;https://statsapi.web.nhl.com/api/v1/wrongurl&quot;, urls))
-#&gt; 15:28:20 | 31 | W | nhl_from_json https://statsapi.web.nhl.com/api/v1/wrongurl error for attempt no: 0 HTTP error 404.
-#&gt; 15:28:20 | 29 | E | The following 1 of 3 url retrievals errored:$ https://statsapi.web.nhl.com/api/v1/wrongurl
+#&gt; 10:36:14 | W | nhl_from_json https://statsapi.web.nhl.com/api/v1/wrongurl error for attempt no: 0 HTTP error 404.
+#&gt; 10:36:14 | E | The following 1 of 3 url retrievals errored:$ https://statsapi.web.nhl.com/api/v1/wrongurl
 #&gt; [[1]]
 #&gt; [[1]]
 #&gt; [1] &quot;Error in open.connection(con, \&quot;rb\&quot;) : HTTP error 404.\n&quot;
@@ -327,7 +325,7 @@ nhl_get_data(urls)
 #&gt; 
 #&gt; [[2]]
 #&gt; [[2]]$copyright
-#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved.&quot;
+#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2021. All Rights Reserved.&quot;
 #&gt; 
 #&gt; [[2]]$teams
 #&gt;   id              name            link abbreviation teamName locationName
@@ -336,31 +334,29 @@ nhl_get_data(urls)
 #&gt; 1            1982 New Jersey http://www.newjerseydevils.com/          23   TRUE
 #&gt;          venue.name          venue.link venue.city venue.timeZone.id
 #&gt; 1 Prudential Center /api/v1/venues/null     Newark  America/New_York
-#&gt;   venue.timeZone.offset venue.timeZone.tz division.id division.name
-#&gt; 1                    -4               EDT          18  Metropolitan
-#&gt;   division.nameShort        division.link division.abbreviation conference.id
-#&gt; 1              Metro /api/v1/divisions/18                     M             6
-#&gt;   conference.name       conference.link franchise.franchiseId
-#&gt; 1         Eastern /api/v1/conferences/6                    23
-#&gt;   franchise.teamName        franchise.link
-#&gt; 1             Devils /api/v1/franchises/23
+#&gt;   venue.timeZone.offset venue.timeZone.tz division.id   division.name
+#&gt; 1                    -5               EST          25 MassMutual East
+#&gt;          division.link conference.id conference.name       conference.link
+#&gt; 1 /api/v1/divisions/25             6         Eastern /api/v1/conferences/6
+#&gt;   franchise.franchiseId franchise.teamName        franchise.link
+#&gt; 1                    23             Devils /api/v1/franchises/23
 #&gt; 
 #&gt; attr(,&quot;url&quot;)
 #&gt; [1] &quot;https://statsapi.web.nhl.com/api/v1/teams/1&quot;
 #&gt; 
 #&gt; [[3]]
 #&gt; [[3]]$copyright
-#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2020. All Rights Reserved.&quot;
+#&gt; [1] &quot;NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2021. All Rights Reserved.&quot;
 #&gt; 
 #&gt; [[3]]$people
 #&gt;        id      fullName                   link firstName lastName primaryNumber
-#&gt; 1 8477474 Madison Bowey /api/v1/people/8477474   Madison    Bowey            74
+#&gt; 1 8477474 Madison Bowey /api/v1/people/8477474   Madison    Bowey            29
 #&gt;    birthDate currentAge birthCity birthStateProvince birthCountry nationality
 #&gt; 1 1995-04-22         25  Winnipeg                 MB          CAN         CAN
 #&gt;   height weight active alternateCaptain captain rookie shootsCatches
 #&gt; 1  6&#39; 2&quot;    202   TRUE            FALSE   FALSE  FALSE             R
-#&gt;   rosterStatus currentTeam.id  currentTeam.name currentTeam.link
-#&gt; 1            Y             17 Detroit Red Wings /api/v1/teams/17
+#&gt;   rosterStatus currentTeam.id   currentTeam.name currentTeam.link
+#&gt; 1            Y             16 Chicago Blackhawks /api/v1/teams/16
 #&gt;   primaryPosition.code primaryPosition.name primaryPosition.type
 #&gt; 1                    D           Defenseman           Defenseman
 #&gt;   primaryPosition.abbreviation
