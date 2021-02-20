@@ -308,8 +308,8 @@ nhl_get_data(urls)
 <p>In case there are errors encountered when retrieving the data, the process does not fail, but returns a list with class <code>nhl_get_data_error</code>:</p>
 
 <pre><code class="r">nhl_get_data(c(&quot;https://statsapi.web.nhl.com/api/v1/wrongurl&quot;, urls))
-#&gt; 10:36:14 | W | nhl_from_json https://statsapi.web.nhl.com/api/v1/wrongurl error for attempt no: 0 HTTP error 404.
-#&gt; 10:36:14 | E | The following 1 of 3 url retrievals errored:$ https://statsapi.web.nhl.com/api/v1/wrongurl
+#&gt; 14:18:46 | W | nhl_from_json https://statsapi.web.nhl.com/api/v1/wrongurl error for attempt no: 0 HTTP error 404.
+#&gt; 14:18:47 | E | The following 1 of 3 url retrievals errored:$ https://statsapi.web.nhl.com/api/v1/wrongurl
 #&gt; [[1]]
 #&gt; [[1]]
 #&gt; [1] &quot;Error in open.connection(con, \&quot;rb\&quot;) : HTTP error 404.\n&quot;

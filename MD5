@@ -1,4 +1,4 @@
-81e2d170973a99885a4b1464a5f33c5d *DESCRIPTION
+c177fcd7ba5be929c245a3210f251ba3 *DESCRIPTION
 2d429b56759882e72f711a77c1240273 *NAMESPACE
 3580746a9f8b77a78380e55368f3309c *NEWS.md
 f6d59b030eac3cdb7d6a36c8fb655f78 *R/init.R
@@ -27,7 +27,7 @@ a73e766ce79c1fda8c953908b233ef52 *R/nhl_venues.R
 5bf513961c31cf024c9516f5a80da6c6 *build/vignette.rds
 6e8ba866df6f109d94e71d7f5bf342df *inst/doc/low_level_api.R
 000840290e923d59e0390630009df17e *inst/doc/low_level_api.Rmd
-1cd34eb13d2279e2e0cff14c307d1f8a *inst/doc/low_level_api.html
+48ca1273834d34dc60b264b58c0919af *inst/doc/low_level_api.html
 bd5b46d44702f8a1a5fa260c3bd732c4 *inst/doc/nhl_players_api.R
 b72c8c4bb59a6ff634480ded79e680b6 *inst/doc/nhl_players_api.Rmd
 582108fec6d3f811d40145dd753e5cb1 *inst/doc/nhl_players_api.html
@@ -99,7 +99,7 @@ bc4e1d276173c1def98ac14bf38cf493 *man/util_prepare_player_ids.Rd
 9230f4b9e8f48ceb972ae01f46e84d8b *man/util_report_get_data_errors.Rd
 8c78fdb81da255aa0de4cf52f4c6a171 *tests/testthat.R
 93c52271ab3be3e32fdfeb762826eab8 *tests/testthat/prototype/rink.svg
-898afd74375211c80d6b8dd186c333cd *tests/testthat/setup.R
+0dfb4c615b161969f7c2986f403795c0 *tests/testthat/setup.R
 7334f8f2ad72a2e59bd9d03076105efa *tests/testthat/test.nhl_awards.R
 bd4c5f09d316a58c593b635e5d41733b *tests/testthat/test.nhl_conferences.R
 7dcd3ffd98e3f3b3786a3fdeacd7a5c9 *tests/testthat/test.nhl_divisions.R
@@ -111,7 +111,7 @@ f0fa3f8e4c08d40b3baee4ca8510dca9 *tests/testthat/test.nhl_log.R
 249a1e892a6ad7d2d59d9dbaa32b68bf *tests/testthat/test.nhl_md_endpoints.R
 184e05f48903ad99d8ce5dc9c9319972 *tests/testthat/test.nhl_players.R
 a6b7a0657a1661e26fffd7180da98b38 *tests/testthat/test.nhl_players_seasons.R
-8854e8a12562ca8db507e47cfa2fc43a *tests/testthat/test.nhl_plot_rink.R
+af430193404c3c4f40fbcd4edc1f0432 *tests/testthat/test.nhl_plot_rink.R
 e67c33a039ed6cb4ec85d1ce77317e32 *tests/testthat/test.nhl_process_players_seasons.R
 6a2bd272eb62a2fe5c73fb62b90b6301 *tests/testthat/test.nhl_process_results.R
 20be755bfbc47c75689773c2ca2e9735 *tests/testthat/test.nhl_schedule.R
